@@ -141,7 +141,7 @@ function handleCreateOrDeleteTags(record, cb) {
   });
   checkForRequiredTag(instanceIds, cb);
 }
-registerHandler("ec2.amazonaws.com", "CreateTags", handleCreateOrDeleteTags);
+// registerHandler("ec2.amazonaws.com", "CreateTags", handleCreateOrDeleteTags);
 registerHandler("ec2.amazonaws.com", "DeleteTags", handleCreateOrDeleteTags);
 
 function handleRunInstances(record, cb) {
