@@ -122,8 +122,9 @@ function checkForRequiredTag(instanceIds, cb) {
               return tag.Key === config.requiredTag;
             });
             if (tags.length === 0) {
-              var showtags = util.inspect(instance.Tags);
-              alert("instance " + instance.InstanceId + " is not tagged with " + config.requiredTag + ". \n The instance has the following tags: \n" + showtags, cb);
+              var listTags = util.inspect(instance.Tags);
+              var showTags = listTags.replace(/\[ { Key: /g, "").replace(/, Value/g,"").replace(/ },/g, "").replace(/  { Key: /g, "").replace(/ } ]/g, "");
+              alert("instance " + instance.InstanceId + " is not tagged with " + config.requiredTag + ". \n The instance has the following tags: \n" + showTags, cb);
             }
           }, cb);
         }
