@@ -5,6 +5,7 @@ var config = require("./config.json");
 
 // Node.js modules
 var zlib = require("zlib");
+var util = require('util');
 
 // thirdparty modules
 var async = require("async");
@@ -121,7 +122,8 @@ function checkForRequiredTag(instanceIds, cb) {
               return tag.Key === config.requiredTag;
             });
             if (tags.length === 0) {
-              alert("instance " + instance.InstanceId + " is not tagged with " + config.requiredTag, cb);
+              var showtags = util.inspect(instance.Tags);
+              alert("instance " + instance.InstanceId + " is not tagged with " + config.requiredTag + ". \n The instance has the following tags: \n" + showtags, cb);
             }
           }, cb);
         }
